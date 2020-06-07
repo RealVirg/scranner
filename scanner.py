@@ -13,12 +13,7 @@ def check_port(port):
 
 
 if __name__ == '__main__':
-    target = input('Enter the host to be scanned: ')
-    try:
-        t_IP = gethostbyname(target)
-    except Exception:
-        t_IP = gethostbyname('127.0.0.1')
-    print('Starting scan on host: ', t_IP)
+    t_IP = gethostbyname('127.0.0.1')
     print('Set range:')
     try:
         first = int(input('First: '))
@@ -28,6 +23,7 @@ if __name__ == '__main__':
         first = 50
         second = 500
 
+    print('Starting scan')
     for i in range(first, second):
         a = threading.Thread(target=check_port, args=(i,))
         a.start()
